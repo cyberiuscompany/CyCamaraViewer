@@ -34,7 +34,7 @@ Este es una herramienta web desarrollada en Python con Flask que permite buscar 
   <img src="Index de la plataforma.png" alt="Foto 1" width="500"/>
 </p>
 
-<h2 align="center">Realizando una busqueda de camaras</h2>
+<h2 align="center">Realizando una busqueda de camara</h2>
 <p align="center">
   <img src="Busqueda Realizada.png" alt="Foto 2" width="500"/>
 </p>
@@ -122,4 +122,38 @@ pip install -r requirements.txt
 python3 app.py
 ```
 
+## ⚙️ 2.1 Instalación en un túnel sobre Unix 🪟 (Para que este público en internet)
 
+```bash
+# En una primera consola lo siguiente:
+git clone https://github.com/cyberiuscompany/CyCamaraViewer.git
+cd CyCamaraViewer
+python -m venv venv (No es obligatorio este comando)
+.\venv\Scripts\activate (No es obligatorio este comando)
+pip install -r requirements.txt
+python3 app.py
+
+# En una segunda consola lo siguiente:
+Descarga: https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-amd64.exe 
+Renombralo como:  cloudflared.exe
+cloudflared.exe --version
+cloudflared.exe tunnel --url http://localhost:80
+```
+
+## ⚙️ 2.1 Instalación en un túnel sobre Unix 🐧 (Para que este público en internet)
+
+```bash
+# En una primera consola lo siguiente:
+git clone https://github.com/cyberiuscompany/CyCamaraViewer.git
+cd CyCamaraViewer
+python3 -m venv venv (No es obligatorio este comando)
+source venv/bin/activate (No es obligatorio este comando)
+pip install -r requirements.txt
+python3 app.py
+
+# En una segunda consola lo siguiente:
+Descarga: wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 
+Renombralo como:  cloudflared
+cloudflared --version
+cloudflared tunnel --url http://localhost:80
+```
