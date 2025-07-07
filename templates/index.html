@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CyCamaraViewer</title>
+    <link rel="stylesheet" href="/static/estilo.css">
+    <link rel="icon" href="static/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <h1>CyCamaraViewer</h1>
+
+        <form method="POST" class="formulario" onsubmit="return generarQuery()">
+            <div class="form-scroll">
+                <div class="form-row">
+                    <select id="marca">
+                        <option value="">🔧 Cualquier marca</option>
+                        <option value="axis">Axis</option>
+                        <option value="hikvision">Hikvision</option>
+                        <option value="mobotix">Mobotix</option>
+                        <option value="webcamxp">WebcamXP</option>
+                        <option value="dahua">Dahua</option>
+                        <option value="foscam">Foscam</option>
+                        <option value="panasonic">Panasonic</option>
+                        <option value="sony">Sony</option>
+                        <option value="bosch">Bosch</option>
+                        <option value="wansview">Wansview</option>
+                        <option value="tp-link">TP-Link</option>
+                        <option value="grandstream">Grandstream</option>
+                        <option value="geovision">GeoVision</option>
+                        <option value="pelco">Pelco</option>
+                        <option value="uniview">Uniview</option>
+                        <option value="samsung">Samsung</option>
+                        <option value="vivotek">Vivotek</option>
+                        <option value="arecont">Arecont Vision</option>
+                        <option value="acti">ACTi</option>
+                        <option value="avtech">AVTech</option>
+                        <option value="camhi">CamHi</option>
+                        <option value="ezviz">EZVIZ</option>
+                        <option value="reolink">Reolink</option>
+                        <option value="xmeye">Xmeye</option>
+                        <option value="netvue">Netvue</option>
+                        <option value="amcrest">Amcrest</option>
+                        <option value="bcs">BCS</option>
+                        <option value="digimerge">Digimerge</option>
+                        <option value="swann">Swann</option>
+                        <option value="arlo">Arlo</option>
+                    </select>
+
+                    <!-- TECNOLOGÍA -->
+                    <select id="tecnologia">
+                        <option value="">📡 Cualquier tecnología</option>
+                        <option value="RTSP">RTSP</option>
+                        <option value="HTTP">HTTP</option>
+                        <option value="HTTPS">HTTPS</option>
+                        <option value="MJPEG">MJPEG</option>
+                        <option value="ONVIF">ONVIF</option>
+                        <option value="H.264">H.264</option>
+                        <option value="H.265">H.265</option>
+                        <option value="RTMP">RTMP</option>
+                        <option value="FTP">FTP</option>
+                        <option value="SMTP">SMTP</option>
+                        <option value="NTP">NTP</option>
+                        <option value="UPNP">UPnP</option>
+                        <option value="SNMP">SNMP</option>
+                        <option value="Telnet">Telnet</option>
+                        <option value="SSH">SSH</option>
+                        <option value="DHCP">DHCP</option>
+                        <option value="TCP">TCP</option>
+                        <option value="UDP">UDP</option>
+                        <option value="ICMP">ICMP</option>
+                        <option value="ARP">ARP</option>
+                        <option value="SIP">SIP</option>
+                        <option value="HTTPSAPI">HTTPS API</option>
+                        <option value="SOAP">SOAP</option>
+                        <option value="WSDL">WSDL</option>
+                        <option value="WebSocket">WebSocket</option>
+                        <option value="Multicast">Multicast</option>
+                        <option value="port:80">Puerto 80</option>
+                        <option value="port:554">Puerto 554</option>
+                        <option value="port:8080">Puerto 8080</option>
+                        <option value="port:8888">Puerto 8888</option>
+                    </select>
+
+                    <!-- PAÍS -->
+                    <select id="pais">
+                        <option value="">🌍 Cualquier país</option>
+                        <option value="country:ES">España</option>
+                        <option value="country:FR">Francia</option>
+                        <option value="country:IT">Italia</option>
+                        <option value="country:DE">Alemania</option>
+                        <option value="country:US">Estados Unidos</option>
+                        <option value="country:RU">Rusia</option>
+                        <option value="country:CN">China</option>
+                        <option value="country:JP">Japón</option>
+                        <option value="country:KR">Corea del Sur</option>
+                        <option value="country:CA">Canadá</option>
+                        <option value="country:MX">México</option>
+                        <option value="country:BR">Brasil</option>
+                        <option value="country:AR">Argentina</option>
+                        <option value="country:CL">Chile</option>
+                        <option value="country:CO">Colombia</option>
+                        <option value="country:PT">Portugal</option>
+                        <option value="country:NL">Países Bajos</option>
+                        <option value="country:BE">Bélgica</option>
+                        <option value="country:UK">Reino Unido</option>
+                        <option value="country:SE">Suecia</option>
+                        <option value="country:NO">Noruega</option>
+                        <option value="country:FI">Finlandia</option>
+                        <option value="country:PL">Polonia</option>
+                        <option value="country:UA">Ucrania</option>
+                        <option value="country:IN">India</option>
+                        <option value="country:AU">Australia</option>
+                        <option value="country:ZA">Sudáfrica</option>
+                        <option value="country:IL">Israel</option>
+                        <option value="country:TR">Turquía</option>
+                        <option value="country:TH">Tailandia</option>
+                    </select>
+
+                    <!-- DISPOSITIVO -->
+                    <select id="dispositivo">
+                        <option value="">📷 Cualquier tipo</option>
+                        <option value="ipcam">Cámara IP</option>
+                        <option value="DVR">DVR</option>
+                        <option value="NVR">NVR</option>
+                        <option value="cam">Cámara genérica</option>
+                        <option value="security camera">Cámara de seguridad</option>
+                        <option value="netcam">NetCam</option>
+                        <option value="webcam">Webcam</option>
+                        <option value="camara red">Cámara de red</option>
+                        <option value="baby monitor">Vigilabebés</option>
+                        <option value="cctv">CCTV</option>
+                        <option value="surveillance">Vigilancia</option>
+                        <option value="thermal">Térmica</option>
+                        <option value="doorbell">Videoportero</option>
+                        <option value="fisheye">Ojo de pez</option>
+                        <option value="ptz">PTZ</option>
+                        <option value="zoom">Zoom óptico</option>
+                        <option value="ir camera">Infrarroja</option>
+                        <option value="bullet camera">Bullet</option>
+                        <option value="dome camera">Domo</option>
+                        <option value="box camera">Caja</option>
+                        <option value="wireless camera">Inalámbrica</option>
+                        <option value="indoor">Interior</option>
+                        <option value="outdoor">Exterior</option>
+                        <option value="solar camera">Solar</option>
+                        <option value="POE">PoE</option>
+                        <option value="wifi camera">WiFi</option>
+                        <option value="motion detection">Con movimiento</option>
+                        <option value="4k camera">4K</option>
+                        <option value="HD camera">HD</option>
+                        <option value="camhi">CamHi</option>
+                    </select>
+
+                    <!-- PUERTO -->
+                    <select id="puerto">
+                        <option value="">📍 Cualquier puerto</option>
+                        <option value="port:80">80</option>
+                        <option value="port:81">81</option>
+                        <option value="port:82">82</option>
+                        <option value="port:83">83</option>
+                        <option value="port:84">84</option>
+                        <option value="port:85">85</option>
+                        <option value="port:86">86</option>
+                        <option value="port:88">88</option>
+                        <option value="port:90">90</option>
+                        <option value="port:443">443</option>
+                        <option value="port:554">554</option>
+                        <option value="port:8080">8080</option>
+                        <option value="port:8081">8081</option>
+                        <option value="port:8090">8090</option>
+                        <option value="port:8181">8181</option>
+                        <option value="port:8200">8200</option>
+                        <option value="port:8888">8888</option>
+                        <option value="port:5000">5000</option>
+                        <option value="port:6000">6000</option>
+                        <option value="port:32">32</option>
+                        <option value="port:6666">6666</option>
+                        <option value="port:7000">7000</option>
+                        <option value="port:9000">9000</option>
+                        <option value="port:10000">10000</option>
+                        <option value="port:49152">49152</option>
+                        <option value="port:49153">49153</option>
+                        <option value="port:49154">49154</option>
+                        <option value="port:49155">49155</option>
+                        <option value="port:49156">49156</option>
+                        <option value="port:49157">49157</option>
+                    </select>
+
+                    <select id="auth">
+                        <option value="">🔐 Sin filtro login</option>
+                        <option value="http.status:401">Requiere autenticación</option>
+                    </select>
+
+                    <select id="interfazweb">
+                        <option value="">🖼 Sin filtro UI</option>
+                        <option value="has_screenshot:true">Con interfaz web</option>
+                    </select>
+
+                    <button type="submit">Buscar</button>
+                </div>
+            </div>
+
+            <input type="hidden" name="query" id="query_final">
+            <input type="hidden" name="query_descripcion" id="query_desc">
+        </form>
+
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+
+        {% if stats.total > 0 %}
+            <div class="descripcion_query">
+                <p>🔍 <strong>Búsqueda realizada:</strong> {{ request.form.get("query_descripcion") }}</p>
+            </div>
+
+            <div class="estadisticas">
+                <p><strong>📊 Resultados:</strong> {{ stats.total }}</p>
+                <p>🌍 Con país definido: {{ stats.con_pais }}</p>
+                <p>🟢 Accesibles vía HTTP: {{ stats.http_accessibles }}</p>
+                <p>🟠 Requieren login: {{ stats.requieren_login }}</p>
+            </div>
+        {% endif %}
+
+        {% if results %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>IP</th>
+                        <th>Puerto</th>
+                        <th>Organización</th>
+                        <th>Ciudad</th>
+                        <th>País</th>
+                        <th>Estado</th>
+                        <th>Enlace</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in results %}
+                        <tr class="{% if r.accessible %}accesible{% elif r.auth_required %}requiere-login{% else %}inaccesible{% endif %}">
+                            <td>{{ r.ip }}</td>
+                            <td>{{ r.port }}</td>
+                            <td>{{ r.org }}</td>
+                            <td>{{ r.city }}</td>
+                            <td>{{ r.country }}</td>
+                            <td>
+                                {% if r.accessible %}
+                                    🟢 Disponible
+                                {% elif r.auth_required %}
+                                    🟠 Requiere login
+                                {% else %}
+                                    🔴 No accesible
+                                {% endif %}
+                            </td>
+                            <td><a href="{{ r.url }}" target="_blank">Abrir</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+
+    <script>
+        function generarQuery() {
+            const campos = {
+                marca: document.getElementById("marca"),
+                tecnologia: document.getElementById("tecnologia"),
+                pais: document.getElementById("pais"),
+                dispositivo: document.getElementById("dispositivo"),
+                puerto: document.getElementById("puerto"),
+                auth: document.getElementById("auth"),
+                interfazweb: document.getElementById("interfazweb")
+            };
+
+            let query = "";
+            let descripcion = [];
+
+            for (const [clave, campo] of Object.entries(campos)) {
+                if (campo.value) {
+                    query += campo.value + " ";
+                    descripcion.push(describeCampo(clave, campo.value));
+                }
+            }
+
+            document.getElementById("query_final").value = query.trim();
+            document.getElementById("query_desc").value = descripcion.length > 0 ? descripcion.join(", ") : "sin filtros (búsqueda global)";
+            return true;
+        }
+
+        function describeCampo(campo, valor) {
+            const descripciones = {
+                marca: {
+                    axis: "marca Axis",
+                    hikvision: "marca Hikvision",
+                    mobotix: "marca Mobotix",
+                    webcamxp: "marca WebcamXP",
+                    dahua: "marca Dahua",
+                    foscam: "marca Foscam"
+                },
+                tecnologia: {
+                    RTSP: "protocolo RTSP",
+                    MJPEG: "protocolo MJPEG",
+                    HTTP: "protocolo HTTP",
+                    "port:554": "puerto 554 (RTSP)"
+                },
+                pais: {
+                    "country:ES": "España",
+                    "country:FR": "Francia",
+                    "country:US": "Estados Unidos",
+                    "country:RU": "Rusia",
+                    "country:CN": "China"
+                },
+                dispositivo: {
+                    DVR: "tipo DVR",
+                    NVR: "tipo NVR",
+                    ipcam: "cámara IP",
+                    cam: "cámara genérica"
+                },
+                puerto: {
+                    "port:80": "puerto 80",
+                    "port:443": "puerto 443",
+                    "port:554": "puerto 554",
+                    "port:8080": "puerto 8080"
+                },
+                auth: {
+                    "http.status:401": "que requieren autenticación"
+                },
+                interfazweb: {
+                    "has_screenshot:true": "que tienen interfaz web"
+                }
+            };
+            return descripciones[campo]?.[valor] || valor;
+        }
+    </script>
+    <footer>
+  <div class="footer-socials" style="display: flex; flex-direction: row; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem;">
+
+    <!-- GitHub -->
+    <div class="social-item" style="display: flex; align-items: center; gap: 0.5rem;">
+      <i class="fab fa-github" style="font-size: 1.2rem;"></i>
+      <a href="https://github.com/cyberiuscompany" target="_blank" style="padding: 0.4rem 0.8rem; background-color: #333; color: white; border-radius: 5px; text-decoration: none;">
+        GitHub
+      </a>
+    </div>
+
+    <!-- YouTube -->
+    <div class="social-item" style="display: flex; align-items: center; gap: 0.5rem;">
+      <i class="fab fa-youtube" style="font-size: 1.2rem; color: red;"></i>
+      <a href="https://www.youtube.com/@CyberiusCompany" target="_blank" style="padding: 0.4rem 0.8rem; background-color: red; color: white; border-radius: 5px; text-decoration: none;">
+        YouTube
+      </a>
+    </div>
+
+    <!-- PayPal -->
+    <div class="social-item" style="display: flex; align-items: center; gap: 0.5rem;">
+      <i class="fab fa-paypal" style="font-size: 1.2rem; color: #0070ba;"></i>
+      <a href="https://paypal.me/CyberiusCompany" target="_blank" style="padding: 0.4rem 0.8rem; background-color: #0070ba; color: white; border-radius: 5px; text-decoration: none;">
+        PayPal
+      </a>
+    </div>
+
+    <!-- Discord -->
+    <div class="social-item" style="display: flex; align-items: center; gap: 0.5rem;">
+      <i class="fab fa-discord" style="font-size: 1.2rem; color: #5865F2;"></i>
+      <a href="https://disboard.org/server/1299310806617292922"
+        target="_blank"
+        style="padding: 0.4rem 0.8rem; background-color: #5865F2; color: white; border-radius: 5px; text-decoration: none;">
+        Discord
+      </a>
+    </div>
+  </div>
+
+  </div>
+
+  <div style="text-align: center; font-size: 0.9rem; color: #888;">
+    &copy; 2025 Cyberius Company. Todos los derechos reservados.
+  </div>
+</footer>
+</body>
+</html>

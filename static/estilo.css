@@ -1,0 +1,145 @@
+/* Estilo general del cuerpo de la página */
+body {
+    background-color: #222;          /* Fondo oscuro general */
+    color: #ddd;                     /* Color claro del texto */
+    font-family: Arial, sans-serif; /* Fuente limpia y sin adornos */
+    margin: 0;
+    padding: 0;
+}
+
+/* Contenedor principal donde va todo el contenido */
+.container {
+    max-width: 1400px;               /* Anchura máxima del bloque principal */
+    margin: 40px auto;               /* Centrado vertical y horizontal */
+    padding: 20px;                   /* Espaciado interior */
+    background-color: #2d3037;       /* Color de fondo del contenedor */
+    border-radius: 10px;             /* Bordes redondeados */
+    box-shadow: 0 0 15px rgba(0,0,0,0.3); /* Sombra alrededor del bloque */
+}
+
+/* Título principal */
+h1 {
+    color: #83f1e8;                  /* Azul llamativo */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Contenedor del formulario completo */
+.formulario {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Scroll horizontal si los filtros no caben */
+.form-scroll {
+    overflow-x: auto;               /* Habilita desplazamiento horizontal si es necesario */
+    padding-bottom: 10px;
+}
+
+/* Fila horizontal de todos los selectores y botón */
+.form-row {
+    display: flex;                  /* Coloca los elementos en línea horizontal */
+    flex-wrap: nowrap;              /* No permite que pasen a otra línea */
+    justify-content: flex-start;    /* Alineados a la izquierda */
+    gap: 10px;                      /* Separación entre elementos */
+    min-width: 1000px;              /* Para que no se compriman demasiado */
+}
+
+/* Estilo común para todos los <select> y el botón */
+select, button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;             /* Bordes redondeados */
+    font-size: 14px;
+    background-color: #4f5354;      /* Gris oscuro de fondo */
+    color: white;                   /* Texto blanco */
+    min-width: 140px;               /* Anchura mínima para que no se aplasten */
+}
+
+/* Botón de búsqueda (diferente color) */
+button {
+    background-color: #83f1e8;      /* Azul énfasis */
+    color: #2d3037;                 /* Contraste con fondo del contenedor */
+    font-weight: bold;
+}
+
+/* Hover sobre el botón */
+button:hover {
+    background-color: #4f5354;      /* Mismo gris que los selects */
+    color: white;
+}
+
+/* Estilo de mensaje de error */
+.error {
+    color: #ff4444;                 /* Rojo claro para errores */
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Caja que muestra la descripción de la búsqueda */
+.descripcion_query {
+    background-color: #333;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+/* Panel de estadísticas */
+.estadisticas {
+    background-color: #333;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    line-height: 1.6;               /* Espaciado entre líneas */
+}
+
+/* Estilo de la tabla de resultados */
+table {
+    width: 100%;
+    border-collapse: collapse;      /* Bordes unidos */
+    font-size: 15px;
+}
+
+/* Cabecera de la tabla */
+thead {
+    background-color: #444;         /* Cabecera gris medio */
+}
+
+/* Celdas de cabecera */
+thead th {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Celdas normales de la tabla */
+tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #444;  /* Línea separadora gris */
+}
+
+/* Enlaces */
+a {
+    color: #83f1e8;                 /* Azul énfasis */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Fila de cámara accesible */
+.accesible {
+    background-color: #19331e;      /* Verde oscuro */
+}
+
+/* Fila que requiere autenticación */
+.requiere-login {
+    background-color: #332c19;      /* Naranja oscuro */
+}
+
+/* Fila de cámara no accesible */
+.inaccesible {
+    background-color: #331919;      /* Rojo oscuro */
+}
