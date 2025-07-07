@@ -29,17 +29,17 @@ Este es una herramienta web desarrollada en Python con Flask que permite buscar 
 
 ## Fotos de Herramienta
 
-<h2 align="center">Foto 1</h2>
+<h2 align="center">Index principal de la Web</h2>
 <p align="center">
   <img src="Index de la plataforma.png" alt="Foto 1" width="500"/>
 </p>
 
-<h2 align="center">Foto 2</h2>
+<h2 align="center">Realizando una busqueda de camara</h2>
 <p align="center">
   <img src="Busqueda Realizada.png" alt="Foto 2" width="500"/>
 </p>
 
-<h2 align="center">Foto 3</h2>
+<h2 align="center">Resultado de la busqueda realizada</h2>
 <p align="center">
   <img src="Resultado de Busqueda.png" alt="Foto 3" width="500"/>
 </p>
