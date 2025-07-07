@@ -3,6 +3,7 @@ import shodan
 import json
 import requests
 from concurrent.futures import ThreadPoolExecutor
+import socket
 
 # Leer configuración
 with open("config.json") as f:
@@ -16,12 +17,9 @@ app = Flask(__name__)
 def check_http_access(ip, port):
     try:
         url = f"http://{ip}:{port}"
-        
-        # Detectar directamente desde la URL si contiene '/#/' al final o dentro
         if "/#/" in url:
             return {'url': url, 'accessible': False, 'auth_required': True}
 
-        # Petición para analizar respuesta
         response = requests.get(url, timeout=4)
 
         if response.status_code == 401:
@@ -29,18 +27,14 @@ def check_http_access(ip, port):
 
         elif response.status_code == 200:
             html = response.text.lower()
-
-            # Detectar firmas típicas de login oculto o visible
             patrones_login = [
                 "login.asp", "login.html", "user", "password",
                 "signin", "form-login", "/#/login", "/#/", "doc/page/login.asp"
             ]
-
             if any(p in html for p in patrones_login):
                 return {'url': url, 'accessible': False, 'auth_required': True}
             else:
                 return {'url': url, 'accessible': True, 'auth_required': False}
-
         else:
             return {'url': url, 'accessible': False, 'auth_required': False}
 
@@ -105,4 +99,8 @@ def index():
     return render_template('index.html', results=results, stats=stats, error=error)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    local_ip = socket.gethostbyname(socket.gethostname())
+    print(f"\n✅ CyCamaraViewer iniciado con éxito.")
+    print(f"🌐 Acceso local:       http://127.0.0.1")
+    print(f"📡 Acceso LAN (IP):    http://{local_ip}\n")
+    app.run(host='0.0.0.0', port=80, debug=True)
