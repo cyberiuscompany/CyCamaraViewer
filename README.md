@@ -103,34 +103,23 @@ CyCamaraViewer/
 ## ⚙️ 1.1 Instalación básica con clonado 🪟 Windows
 
 ```bash
-git clone..........
-cd NOMBRE-HERRAMIENTA
+git clone https://github.com/cyberiuscompany/CyCamaraViewer.git
+cd CyCamaraViewer
 python -m venv venv (No es obligatorio este comando)
 .\venv\Scripts\activate (No es obligatorio este comando)
 pip install -r requirements.txt
-python NOMBRE-HERRAMIENTA
+python app.py
 ```
 
 ## ⚙️ 1.2 Instalación básica con clonado 🐧 Linux / macOS
 
 ```bash
-git clone..........
-cd NOMBRE-HERRAMIENTA
+git clone https://github.com/cyberiuscompany/CyCamaraViewer.git
+cd CyCamaraViewer
 python3 -m venv venv (No es obligatorio este comando)
 source venv/bin/activate (No es obligatorio este comando)
 pip install -r requirements.txt
-python3 NOMBRE-HERRAMIENTA
+python3 app.py
 ```
 
-## ⚙️ 2 Instalación como si fuese paquete profesional
-
-```bash
-git clone..........
-cd NOMBRE-HERRAMIENTA
-python3 -m venv venv (No es obligatorio este comando)
-source venv/bin/activate (No es obligatorio este comando)
-pip install -r requirements.txt
-pip install .
-NOMBRE-HERRAMIENTA
-```
 
