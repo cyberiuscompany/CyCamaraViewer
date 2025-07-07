@@ -34,7 +34,7 @@ Este es una herramienta web desarrollada en Python con Flask que permite buscar 
   <img src="Index de la plataforma.png" alt="Foto 1" width="500"/>
 </p>
 
-<h2 align="center">Realizando una busqueda de camara</h2>
+<h2 align="center">Realizando una busqueda de camaras</h2>
 <p align="center">
   <img src="Busqueda Realizada.png" alt="Foto 2" width="500"/>
 </p>
