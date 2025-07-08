@@ -233,6 +233,7 @@
                         <th>País</th>
                         <th>Estado</th>
                         <th>Enlace</th>
+                        <th>Bypass</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -253,6 +254,15 @@
                                 {% endif %}
                             </td>
                             <td><a href="{{ r.url }}" target="_blank">Abrir</a></td>
+                            <td>
+                                {% if r.auth_required and r.marca %}
+                                    <button onclick="probarBypass('{{ r.ip }}', '{{ r.port }}', '{{ r.marca }}', this)">Probar bypass</button>
+                                {% elif r.bypass_url %}
+                                    <a href="{{ r.bypass_url }}" target="_blank" style="color: #83f1e8;">✔️ Ver imagen</a>
+                                {% else %}
+                                    <span style="color: #888;">-</span>
+                                {% endif %}
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -332,6 +342,34 @@
             return descripciones[campo]?.[valor] || valor;
         }
     </script>
+    <script>
+    function probarBypass(ip, port, marca, boton) {
+        boton.disabled = true;
+        boton.innerText = 'Probando...';
+
+        fetch(`/bypass_check?ip=${ip}&port=${port}&marca=${marca}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    boton.outerHTML = `<a href="${data.url}" target="_blank" style="color: #83f1e8;">✔️ Ver imagen</a>`;
+                } else {
+                    boton.innerText = '❌ Sin acceso';
+                }
+            })
+            .catch(err => {
+                console.error('Error en bypass:', err);
+                boton.innerText = '⚠️ Error';
+            });
+    }
+    </script>
+    <!-- MODAL de información -->
+    <div id="bypassModal" style="display:none; position:fixed; top:10%; left:50%; transform:translateX(-50%);
+        background:#2d3037; color:white; padding:1rem; border:1px solid #4f5354; border-radius:10px; z-index:1000;
+        max-width:600px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+    <h3>Rutas conocidas de bypass</h3>
+    <pre id="bypassContent" style="white-space:pre-wrap; background:#1f1f1f; padding:1rem; border-radius:5px;"></pre>
+    <button onclick="document.getElementById('bypassModal').style.display='none'" style="margin-top:1rem;">Cerrar</button>
+    </div>
     <footer>
   <div class="footer-socials" style="display: flex; flex-direction: row; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem;">
 
