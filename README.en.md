@@ -121,7 +121,7 @@ CyCamaraViewer/
 git clone https://github.com/cyberiuscompany/CyCamaraViewer.git
 cd CyCamaraViewer
 python -m venv venv (Optional)
-.env\Scriptsctivate (Optional)
+.\venv\Scripts\activate (Optional)
 pip install -r requirements.txt
 python app.py
 ```
