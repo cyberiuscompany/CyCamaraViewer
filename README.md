@@ -7,6 +7,22 @@
 ![Uso](https://img.shields.io/badge/uso-solo%20legal-important)
 ![Python](https://img.shields.io/badge/python-3.7%2B-yellow)
 
+<p align="center">
+  <img src="https://flagcdn.com/w40/es.png" alt="Español" title="Español">
+  <strong>Español</strong>
+  &nbsp;|&nbsp;
+  <a href="README.en.md">
+    <img src="https://flagcdn.com/w40/us.png" alt="English" title="English">
+    <strong>English</strong>
+  </a>
+  &nbsp;|&nbsp;
+  <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0&list=RDxvFZjo5PgG0&start_radio=1&pp=ygUTcmljayByb2xsaW5nIG5vIGFkc6AHAQ%3D%3D">
+    <img src="https://flagcdn.com/w40/jp.png" alt="日本語" title="Japanese">
+    <strong>日本語</strong>
+  </a>
+</p>
+
+
 # CyCamaraViewer
 
 Este es una herramienta web desarrollada en Python con Flask que permite buscar y clasificar cámaras IP conectadas a Internet usando la API de Shodan. Proporciona filtros avanzados por marca, tecnología, país, tipo de dispositivo, puerto y más. El objetivo es facilitar la auditoría, investigación o visualización de dispositivos accesibles públicamente.
