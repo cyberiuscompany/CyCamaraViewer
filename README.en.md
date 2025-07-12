@@ -8,7 +8,7 @@
 ![Python](https://img.shields.io/badge/python-3.7%2B-yellow)
 
 <p align="center">
-  <a href="README.md">
+  <a href="https://github.com/cyberiuscompany/CyCamaraViewer">
     <img src="https://flagcdn.com/w40/es.png" alt="Español" title="Español">
     <strong>Español</strong>
   </a>
