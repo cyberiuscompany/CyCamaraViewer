@@ -5,6 +5,7 @@
 ![Licencia](https://img.shields.io/badge/licencia-Privada-red)
 ![Uso](https://img.shields.io/badge/uso-solo%20legal-important)
 ![Python](https://img.shields.io/badge/python-3.7%2B-yellow)
+![Tested on](https://img.shields.io/badge/tested%20on-Windows%2010%2F11%20%7C%20Ubuntu%2022.04-blue)
 
 <p align="center">
   <img src="https://flagcdn.com/w40/es.png" alt="Español" title="Español">
