@@ -28,7 +28,6 @@
 Este es una herramienta web desarrollada en Python con Flask que permite buscar y clasificar cámaras IP conectadas a Internet usando la API de Shodan. Proporciona filtros avanzados por marca, tecnología, país, tipo de dispositivo, puerto y más. El objetivo es facilitar la auditoría, investigación o visualización de dispositivos accesibles públicamente.
 
 <p align="center"><em>🚨 **IMPORTANTE:** 🚨 Importante poner tu API propia de www.shodan.io </em></p>
----
 
 <p align="center">
   <img src="icono.png" alt="Banner" width="500"/>
